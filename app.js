@@ -74,7 +74,7 @@ function readOutLoud(message){
         }
     }
 
-    const schoolWd = ['school','nursery', 'child'];
+    const schoolWd = ['school','nursery'];
     var i;
     for (i = 0; i < schoolWd.length; i++) {
         if(message.includes(schoolWd[i])){
