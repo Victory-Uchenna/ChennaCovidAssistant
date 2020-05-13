@@ -1,18 +1,19 @@
 const btn = document.querySelector('.talk');
 const content = document.querySelector('.content');
+const answer = document.querySelector('.speechtotext');
 
 // common questions
-
-const covidfine = ['fines for breaking lockdown rules increases from 60 pounds to 100 pounds. Repeat offenders will see the fine double for each subsequent breach to a maximum of 3200 pounds']
+const greeting = ["Hello, I'm Chenna. Here to clarify your questions on the new lockdown measures"]
+const covidfine = ['Fines for breaking lockdown rules increases from £60 to £100. Repeat offenders will see the fine double for each subsequent breach to a maximum of £3200']
 const travel = ['People in England can drive to parks and beaches. But only with members of same house hold and cannot travel into Wales or Scotland'] 
 const childcare = ['Paid childcare is allowed to begin again. Nannies and childminders are allowed to resume work']
-const facemask = ['people should aim to wear a face covering in enclosed spaces where social distancing is not possible']
-const school = ['nurseries and schools may be allowed to reopen for reception classes and years 1 and 6 by the first of june']
-const work = ['you should return to work if you are a Staff in food production, construction, manufacturing, logistics, distribution and scientific research in laboratories']
+const facemask = ['People should aim to wear a face covering in enclosed spaces where social distancing is not possible']
+const school = ['Nurseries and schools may be allowed to reopen for reception classes and years 1 and 6 by the first of june']
+const work = ['You should return to work if you are a Staff in food production, construction, manufacturing, logistics, distribution and scientific research in laboratories']
 const liftlockdown = ['Lockdown will be lifted when the government is confident the NHS can provide sufficient critical care, when there is sustainable and consistent fall in death rates, the rate of infection falls to manageable levels, there is enough testing and personal equipment to meet future demand and that any changes in restrictions would not lead to a second peak']
-const friends = ['you are allowed to spend time outside with someone from another household as long as the 2 meter rule is followed']
-const sports = ['some outdoor sports are permitted, including tennis, golf, water sports and angling. You can exercise, but not play a team sport, with any person outside your household']
-const stayalert = ['you can stay alert by staying at home as much as possible, keep a 2 metre distance if you have to go out, work from home if you can, limit contact with other people and wash your hands regularly']
+const friends = ['You are allowed to spend time outside with someone from another household as long as the 2 meter rule is followed']
+const sports = ['Some outdoor sports are permitted, including tennis, golf, water sports and angling. You can exercise, but not play a team sport, with any person outside your household']
+const stayalert = ['You can stay alert by staying at home as much as possible, keep a 2 metre distance if you have to go out, work from home if you can, limit contact with other people and wash your hands regularly']
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
@@ -38,11 +39,25 @@ btn.addEventListener('click', () => {
 function readOutLoud(message){
     const speech = new SpeechSynthesisUtterance();
     
+    
     //speech.text = 'i do not have that information at the moment';
     
+    const greetingWd = ['hello','hi','hey'];
+    var i;
+    for (i = 0; i < greetingWd.length; i++) {
+        if(message.includes(greetingWd[i])){
+            const finalMessage = greeting[0]
+            speech.text = finalMessage;
+            answer.textContent=finalMessage;
+        }
+    }
+
     if(message.includes('fine')){
         const finalMessage = covidfine[0]
         speech.text = finalMessage;
+        answer.textContent=finalMessage;
+    
+
     }
 
    // window.speechSynthesis.speak(speech);
@@ -53,6 +68,7 @@ function readOutLoud(message){
         if(message.includes(travelWd[i])){
             const finalMessage = travel[0]
             speech.text = finalMessage;
+            answer.textContent=finalMessage;
         }
     }
 
@@ -62,6 +78,7 @@ function readOutLoud(message){
         if(message.includes(childCareWd[i])){
             const finalMessage = childcare[0]
             speech.text = finalMessage;
+            answer.textContent=finalMessage;
         }
     }
 
@@ -71,6 +88,8 @@ function readOutLoud(message){
         if(message.includes(facemaskWd[i])){
             const finalMessage = facemask[0]
             speech.text = finalMessage;
+            answer.textContent=finalMessage;
+            
         }
     }
 
@@ -80,6 +99,7 @@ function readOutLoud(message){
         if(message.includes(schoolWd[i])){
             const finalMessage = school[0]
             speech.text = finalMessage;
+            answer.textContent=finalMessage;
         }
     }
 
@@ -89,6 +109,7 @@ function readOutLoud(message){
         if(message.includes(workWd[i])){
             const finalMessage = work[0]
             speech.text = finalMessage;
+            answer.textContent=finalMessage;
         }
     }
 
@@ -98,6 +119,7 @@ function readOutLoud(message){
         if(message.includes(liftlockdownWd[i])){
             const finalMessage = liftlockdown[0]
             speech.text = finalMessage;
+            answer.textContent=finalMessage;
         }
     }
 
@@ -107,6 +129,7 @@ function readOutLoud(message){
         if(message.includes(friendsWd[i])){
             const finalMessage = friends[0]
             speech.text = finalMessage;
+            answer.textContent=finalMessage;
         }
     }
 
@@ -116,6 +139,7 @@ function readOutLoud(message){
         if(message.includes(sportsWd[i])){
             const finalMessage = sports[0]
             speech.text = finalMessage;
+            answer.textContent=finalMessage;
         }
     }
 
@@ -125,13 +149,11 @@ function readOutLoud(message){
         if(message.includes(stayalertWd[i])){
             const finalMessage = stayalert[0]
             speech.text = finalMessage;
+            answer.textContent=finalMessage;
         }
     }
 
-    //if(message.includes(travelword[i])){
-    //    const finalMessage = travel[0]
-    //    speech.text = finalMessage;
-    //}
+   
     
     
     
@@ -144,4 +166,5 @@ function readOutLoud(message){
    // speech.voice=voices[0]
 
    window.speechSynthesis.speak(speech);
+
 }
